@@ -3,16 +3,21 @@
         <div class="col-4 mx-auto">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input [(ngModel)]="title" type="text" name="" id="title" class="form-control">
-               
+                <input (keyup)="addTodo()" [(ngModel)]="title" type="text" name="" id="title" class="form-control">
             </div>
-            <div class="d-grid">
+            <!-- <div class="d-grid">
                 <button (click)="addTodo()" class="btn btn-danger">Add</button>
-            </div>
+            </div> -->
 
             <ul class="list-group mt-2">
                 @for(todo of todos; track todo;let e = $even; let o = $odd; let l = $last; let f = $first; let i = $index; let c = $count) {
-                    <li class="list-group-item">{{ e }} - {{ o }} - {{ l }} - {{ f }} - {{ c }} - {{ i }} - {{ todo }}</li>
+                    <li class="list-group-item">
+                         {{ i }} - {{ todo }}
+                        <div class="text-end">
+                            <button (click)="editTodo(todo)" class="btn btn-warning btn-sm">Edit</button>
+                            <button (click)="deleteTodo(i)" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                    </li>
                 }
             </ul>
 
