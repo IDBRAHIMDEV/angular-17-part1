@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12 my-4">
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-dark"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Thumbnail</th>
+                        <th scope="col">Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(course of dataCourses; track course.id) {
+
+                        <tr class="">
+                            <td scope="row">{{ course.title }}</td>
+                            <td><img width="100px" [src]="course.image" [alt]="course.title" srcset=""></td>
+                            <td>{{ course.price }}</td>
+                            <td class="text-end">
+                                <button class="btn btn-warning btn-sm me-1">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
