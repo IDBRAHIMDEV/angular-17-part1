@@ -1,18 +1,23 @@
 <div class="row my-4">
-    <div class="col-4">
-        <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="Title" />
-            <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <div class="card-text">
-                    price 
-                    <div class="text-center">
-                        <button class="btn btn-warning btn-sm me-1">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+
+    @for(course of dataCourses; track course.id) {
+
+        <div class="col-4">
+            <div class="card">
+                <img class="card-img-top" [src]="course.image" [alt]="course.title" />
+                <div class="card-body">
+                    <h4 class="card-title">{{ course.title }}</h4>
+                    <div class="card-text">
+                         
+                        <div class="text-center">
+                            <p class="my-3 text-center">{{ course.price }}</p>
+                            <button class="btn btn-warning btn-sm me-1">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
-        
-    </div>
+    }
 </div>

@@ -48,4 +48,9 @@ export class CoursesComponent {
     this.listView = status
   }
 
+  deleteCourseFromParent(id: number) {
+    console.log('i m a parent', id)
+    this.courses = this.courses.filter(course => course.id !== id)
+  }
+
 }

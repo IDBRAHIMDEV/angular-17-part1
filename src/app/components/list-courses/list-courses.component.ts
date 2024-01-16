@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Course } from '../../models/course';
 
 @Component({
   selector: 'app-list-courses',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './list-courses.component.css'
 })
 export class ListCoursesComponent {
-
+  @Input() dataCourses: Course[] = []
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../models/course';
 
 @Component({
@@ -11,5 +11,12 @@ import { Course } from '../../models/course';
 export class TableCoursesComponent {
   
   @Input() dataCourses: Course[] = []
+
+  @Output() deleteCourseFromChid = new EventEmitter()
+  
+  wantRemoveCourse(id: number) {
+    console.log('remove a course im a child')
+    this.deleteCourseFromChid.emit(id)
+  }
 
 }

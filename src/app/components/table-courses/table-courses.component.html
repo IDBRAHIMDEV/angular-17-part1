@@ -23,7 +23,10 @@
                             <td>{{ course.price }}</td>
                             <td class="text-end">
                                 <button class="btn btn-warning btn-sm me-1">Edit</button>
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                
+                                @if(!!course.id) {
+                                    <button (click)="wantRemoveCourse(course.id)" class="btn btn-sm btn-danger">Delete</button>
+                                }
                             </td>
                         </tr>
                         

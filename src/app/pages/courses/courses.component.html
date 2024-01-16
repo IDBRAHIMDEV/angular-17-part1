@@ -49,10 +49,10 @@
 
 @if(listView) {
 
-   <app-table-courses [dataCourses]="courses"></app-table-courses>
+   <app-table-courses (deleteCourseFromChid)="deleteCourseFromParent($event)" [dataCourses]="courses"></app-table-courses>
 }
 @else {
 
-   <app-list-courses></app-list-courses>
+   <app-list-courses [dataCourses]="courses"></app-list-courses>
 }
 
