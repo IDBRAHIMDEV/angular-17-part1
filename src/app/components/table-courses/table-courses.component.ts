@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../models/course';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-table-courses',
   standalone: true,
-  imports: [],
+  imports: [NgClass, NgStyle],
   templateUrl: './table-courses.component.html',
   styleUrl: './table-courses.component.css'
 })

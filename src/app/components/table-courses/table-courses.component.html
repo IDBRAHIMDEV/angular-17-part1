@@ -22,11 +22,17 @@
                             <td><img width="100px" [src]="course.image" [alt]="course.title" srcset=""></td>
                             <td>{{ course.price }}</td>
                             <td class="text-end">
-                                <button (click)="changeStatusCourse(course)" class="btn btn-sm btn-info me-1">{{ course.enable ? 'Enable' : 'Disable' }}</button>
-                                <button (click)="editCourseEntire(course)" class="btn btn-warning btn-sm me-1">Edit</button>
+                                <button (click)="changeStatusCourse(course)" 
+                                [ngClass]="{
+                                    'btn-info': course.enable,
+                                    'btn-primary': !course.enable,
+                                }" 
+                                
+                                class="btn btn-sm me-1"><i class="fa fa-power-off"></i></button>
+                                <button (click)="editCourseEntire(course)" class="btn btn-warning btn-sm me-1"><i class="fa fa-pencil"></i></button>
                                 
                                 @if(!!course.id) {
-                                    <button (click)="wantRemoveCourse(course.id)" class="btn btn-sm btn-danger">Delete</button>
+                                    <button (click)="wantRemoveCourse(course.id)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                 }
                             </td>
                         </tr>
