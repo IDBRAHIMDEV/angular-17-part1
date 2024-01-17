@@ -13,10 +13,22 @@ export class TableCoursesComponent {
   @Input() dataCourses: Course[] = []
 
   @Output() deleteCourseFromChid = new EventEmitter()
+
+  @Output() editCourseFromChild = new EventEmitter()
+
+  @Output() statusCourseFromChild = new EventEmitter()
   
-  wantRemoveCourse(id: number) {
+  wantRemoveCourse(id: number | string) {
     console.log('remove a course im a child')
     this.deleteCourseFromChid.emit(id)
+  }
+
+  changeStatusCourse(course: Course) {
+    this.statusCourseFromChild.emit({id: course.id, status: course.enable})
+  }
+
+  editCourseEntire(course: Course) {
+    this.editCourseFromChild.emit(course)
   }
 
 }

@@ -1,7 +1,8 @@
 export interface Course {
-    id?: number | null;
+    id?: number | string | null;
     title: string;
     image: string;
     price: number;
     content: string;
+    enable: boolean;
 }
