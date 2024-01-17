@@ -33,4 +33,8 @@ export class CourseService {
   partialUpdate(id: number | string, data: CourseDto): Observable<Course> {
     return this.http.patch<Course>(`${this.apiUrl}/${id}`, data)
   }
+
+  destroy(id: number | string): Observable<null> {
+    return this.http.delete<null>(`${this.apiUrl}/${id}`)
+  }
 }
