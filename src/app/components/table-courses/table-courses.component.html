@@ -28,7 +28,7 @@
                                     'btn-primary': !course.enable,
                                 }" 
                                 
-                                class="btn btn-sm me-1"><i class="fa fa-power-off"></i></button>
+                                class="btn btn-sm me-1"><i class="fa" [ngClass]="{'fa-star': course.enable, 'fa-star-o': !course.enable}"></i></button>
                                 <button (click)="editCourseEntire(course)" class="btn btn-warning btn-sm me-1"><i class="fa fa-pencil"></i></button>
                                 
                                 @if(!!course.id) {
