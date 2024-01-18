@@ -13,30 +13,69 @@
     @if(toggleForm) {
         <div class="row my-4">
            <div class="col-6 mx-auto">
-               <div class="form-group">
-                   <label for="">Title</label>
-                   <input [(ngModel)]="courseForm.title" type="text" name="" id="title" class="form-control">
-               </div>
-               <div class="form-group">
-                   <label for="">Image</label>
-                   <input [(ngModel)]="courseForm.image" type="url" name="" id="image" class="form-control">
-               </div>
-               <div class="form-group">
-                   <label for="">Price</label>
-                   <input [(ngModel)]="courseForm.price" type="number" name="" id="price" class="form-control">
-               </div>
-               <div class="form-group">
-                   <label for="">Content</label>
-                   <textarea [(ngModel)]="courseForm.content" name="" id="content" cols="30" rows="2" class="form-control"></textarea>
-               </div>
-               <div class="d-grid my-3">
-                   @if(editMode) {
-                       <button (click)="updateCourse()" class="btn btn-warning">Update</button>
+            <form #courseForm="ngForm" (ngSubmit)="saveCourse(courseForm)">
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input required minlength="10" pattern="[0-9a-zA-Z ]*" ngModel #title="ngModel" (change)="info(title)" type="text" name="title" id="title" class="form-control">
+                   @if(title.touched && title.invalid) {
+                      
+                      @if(title.errors?.['required']) {
+ 
+                          <div class="alert alert-danger">
+                           The Title is Required !
+                          </div>
+                      }
+ 
+                      @if(title.errors?.['email']) {
+ 
+                         <div class="alert alert-danger">
+                          The Title is email
+                         </div>
+                     }
+ 
+                     @if(title.errors?.['pattern']) {
+ 
+                         <div class="alert alert-danger">
+                          The Title is Alpha numeric
+                         </div>
+                     }
+ 
+                      @if(title.errors?.['minlength']) {
+ 
+                         <div class="alert alert-danger">
+                          The Title Should be great than {{ title.errors?.['minlength']['actualLength'] }} / {{ title.errors?.['minlength']['requiredLength'] }} caracters !
+                         </div>
+                     }
                    }
-                   @else {
-                       <button (click)="saveCourse()" class="btn btn-primary">Save</button>
-                   }
-               </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Image</label>
+                    <input required ngModel #image="ngModel" type="url" name="image" id="image" class="form-control">
+                    @if(image.touched && image.invalid) {
+                      
+                     @if(image.errors?.['required']) {
+ 
+                         <div class="alert alert-danger">
+                          The image is Required !
+                         </div>
+                     }
+ 
+                  }
+                </div>
+                <div class="form-group">
+                    <label for="">Price</label>
+                    <input #price="ngModel" ngModel type="number" name="price" id="price" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Content</label>
+                    <textarea #content="ngModel" ngModel id="content" name="content" cols="30" rows="2" class="form-control"></textarea>
+                </div>
+                <div class="d-grid my-3">
+                   
+                    <button [disabled]="courseForm.invalid" class="btn btn-primary">Save</button>
+                    
+                </div>
+            </form>
            </div>
         </div>
     }

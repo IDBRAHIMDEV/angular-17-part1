@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../models/course';
-import { NgClass, NgStyle } from '@angular/common';
+import { CommonModule, NgClass, NgStyle } from '@angular/common';
+
 
 @Component({
   selector: 'app-table-courses',
   standalone: true,
-  imports: [NgClass, NgStyle],
+  imports: [NgClass, NgStyle, CommonModule],
   templateUrl: './table-courses.component.html',
   styleUrl: './table-courses.component.css'
 })
 export class TableCoursesComponent {
+
+  myDate = new Date()
   
   @Input() dataCourses: Course[] = []
 

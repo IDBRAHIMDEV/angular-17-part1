@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { TableCoursesComponent } from '../../components/table-courses/table-courses.component';
 import { ListCoursesComponent } from '../../components/list-courses/list-courses.component';
 import { Course } from '../../models/course';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { v4 as uuidv4 } from 'uuid';
 import { CourseService } from '../../services/course.service';
@@ -37,6 +37,14 @@ export class CoursesComponent implements OnInit {
 
   courses: Course[] = []
 
+  info(data: any) {
+    console.log(data)
+  }
+
+  submitForm(data: any) {
+    console.log(data)
+  }
+
   loadCourses() {
     this.courseService.getAll().subscribe({
       next: (response) => { this.courses = response },
@@ -67,9 +75,15 @@ export class CoursesComponent implements OnInit {
 
   }
 
-  saveCourse() {
+  saveCourse(form: NgForm) {
 
-    this.courseService.save(this.courseForm).subscribe({
+    let { value, invalid } = form
+
+    if(invalid) {
+      return
+    }
+
+    this.courseService.save(value).subscribe({
       next: () => this.loadCourses(),
       error: err => console.log(err)
     })
