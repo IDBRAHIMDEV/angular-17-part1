@@ -1,1 +1,25 @@
-<p>users works!</p>
+<div class="row my-5">
+    <div class="col-md-9">
+        <h1>List of users</h1>
+    </div>
+    <div class="col-md-3 text-end">
+        <input type="search" class="form-control"placeholder="Search a users">
+    </div>
+</div>
+<div class="row my-5">
+    @for(user of users(); track user.id) {
+
+        <div class="col-md-3 col-sm-4 col-lg-2">
+            <div class="card my-2">
+                <img class="card-img-top" [src]="user.avatar_url" [alt]="user.login" />
+                <div class="card-body">
+                    <h4 class="card-title">{{ user.login }}</h4>
+                    <p class="card-text">
+                        <a [href]="user.html_url">Read more</a>
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    }
+</div>

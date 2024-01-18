@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -7,27 +10,23 @@ export class UserService {
 
    // constructor(private http: HttpClient) {}
 
-   apiUrl = "http://localhost:3001/courses"
+   apiUrl = "https://api.github.com/users"
    http = inject(HttpClient)
  
-   getAll(): Observable<Course[]> {
-     return this.http.get<Course[]>(this.apiUrl)
+   getAll(): Observable<User[]> {
+     return this.http.get<User[]>(this.apiUrl)
    }
  
-   save(course: Course): Observable<Course> {
-     return this.http.post<Course>(this.apiUrl, course)
+   save(user: User): Observable<User> {
+     return this.http.post<User>(this.apiUrl, user)
    }
  
-   getOne(id: number | string): Observable<Course> {
-     return this.http.get<Course>(`${this.apiUrl}/${id}`)
+   getOne(id: number | string): Observable<User> {
+     return this.http.get<User>(`${this.apiUrl}/${id}`)
    }
  
-   update(id: number | string, course: Course): Observable<Course> {
-     return this.http.put<Course>(`${this.apiUrl}/${id}`, course)
-   }
- 
-   partialUpdate(id: number | string, data: CourseDto): Observable<Course> {
-     return this.http.patch<Course>(`${this.apiUrl}/${id}`, data)
+   update(id: number | string, User: User): Observable<User> {
+     return this.http.put<User>(`${this.apiUrl}/${id}`, User)
    }
  
    destroy(id: number | string): Observable<null> {
