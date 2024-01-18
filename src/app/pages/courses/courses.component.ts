@@ -56,17 +56,24 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourseFromParent(id: number) {
-    console.log('i m a parent', id)
-    this.courses = this.courses.filter(course => course.id !== id)
+    
+    this.courseService.destroy(id).subscribe({
+      next: res => {
+        this.courses = this.courses.filter(course => course.id !== id)
+      },
+      error: err => console.log(err)
+    })
+    
+
   }
 
   saveCourse() {
-    
-    let newCourse: Course = {
-      ...this.courseForm,
-      id: uuidv4()
-    }
-    this.courses = [newCourse, ...this.courses]
+
+    this.courseService.save(this.courseForm).subscribe({
+      next: () => this.loadCourses(),
+      error: err => console.log(err)
+    })
+    // this.courses = [newCourse, ...this.courses]
     this.initCourse()
     this.toggleForm = false
   }
@@ -89,21 +96,47 @@ export class CoursesComponent implements OnInit {
   }
 
   updateCourse() {
-    this.initCourse()
-    this.editMode = false
-    this.toggleForm = false
+
+    let { id } = this.courseForm
+
+    if(id) {    
+      this.courseService.update(id, this.courseForm).subscribe({
+        next: () => {
+          this.initCourse()
+          this.editMode = false
+          this.toggleForm = false
+        },
+        error: () => {}
+      })
+    }
+
   }
 
   enableOrDisableCourse(data: {id: number | string, status: boolean}) {
-    this.courses = this.courses.map(course => {
-      if(course.id === data.id) {
-        return {
-          ...course,
-          enable: !data.status
-        }
-      }
-      return course
+
+
+    if(!confirm('update this course ?')) {
+      return
+    }
+
+    let { id, status } = data
+   
+    this.courseService.partialUpdate(id, {enable: status}).subscribe({
+      next: () => {
+        this.courses = this.courses.map(course => {
+          if(course.id === data.id) {
+            return {
+              ...course,
+              enable: !data.status
+            }
+          }
+          return course
+        })
+      },
+      error: err => console.log(err)
     })
+
+   
   }
 
 }

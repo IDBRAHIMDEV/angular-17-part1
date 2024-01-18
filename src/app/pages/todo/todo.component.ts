@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -12,16 +12,16 @@ import Swal from 'sweetalert2';
 export class TodoComponent {
 
   title = "";
-  todos = ['angular', 'javascript', 'angular']
+  todos = signal(['angular', 'javascript', 'angular'])
 
   addTodo() {
     // this.todos.unshift(this.title)
 
-    this.todos = [this.title, ...this.todos]
+    this.todos.update(currentTodos => [...currentTodos, this.title])
     this.title = ""
   }
 
-  deleteTodo(i: number) {
+  deleteTodo(title: string) {
 
     Swal.fire({
       title: "Are you sure?",
@@ -34,7 +34,7 @@ export class TodoComponent {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        this.todos.splice(i, 1)
+        this.todos.update(currentTodos => currentTodos.filter(todo => todo !== title))
 
         Swal.fire({
           title: "Deleted!",

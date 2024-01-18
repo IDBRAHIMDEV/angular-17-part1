@@ -1,18 +1,19 @@
 {
   "courses": [
     {
-      "title": "Learn ReactJS",
-      "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ndgpEj1YRAqrlS0gNZBb",
-      "price": 10,
-      "content": "learn how to dev with React 18",
-      "id": "02b5"
-    },
-    {
       "id": "108b",
       "title": "Learn ReactJS",
       "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ndgpEj1YRAqrlS0gNZBb",
       "price": 63.87763,
       "content": "learn how to dev with React 18"
+    },
+    {
+      "id": "01f7",
+      "title": "Learn Django v4",
+      "image": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ndgpEj1YRAqrlS0gNZBb",
+      "price": 38.3344,
+      "content": "learhsdfndfdfjb",
+      "enable": true
     }
   ],
   "categories": [],
