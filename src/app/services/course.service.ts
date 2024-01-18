@@ -37,4 +37,5 @@ export class CourseService {
   destroy(id: number | string): Observable<null> {
     return this.http.delete<null>(`${this.apiUrl}/${id}`)
   }
+
 }

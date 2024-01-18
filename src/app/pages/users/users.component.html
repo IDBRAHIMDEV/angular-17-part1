@@ -3,7 +3,8 @@
         <h1>List of users</h1>
     </div>
     <div class="col-md-3 text-end">
-        <input type="search" class="form-control"placeholder="Search a users">
+        
+        <input (keyup.enter)="searchUser()" [(ngModel)]="query" type="search" class="form-control"placeholder="Search a users">
     </div>
 </div>
 <div class="row my-5">
