@@ -1,1 +1,55 @@
-<p>login works!</p>
+
+<div class="row my-5">
+    <div class="col-4 my-5 mx-auto">
+
+        <div class="text-center my-4">
+            <h3>Login</h3>
+            <p>Sign in to our Eurafric System</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group my-3">
+                <label for="">Username</label>
+                <input formControlName="username" type="text" class="form-control" id="username">
+
+                @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+
+                    @if(loginForm.get('username')?.['errors']?.['required']) {
+                        <div class="alert alert-warning">
+                            This field is required
+                        </div>
+                    }
+
+                    @if(loginForm.get('username')?.['errors']?.['minlength']) {
+                        <div class="alert alert-warning">
+                            This field should be great than 3 caracters !
+                        </div>
+                    }
+
+                    @if(loginForm.get('username')?.['errors']?.['pattern']) {
+                        <div class="alert alert-warning">
+                            This field is not respect our pattern
+                        </div>
+                    }
+                }
+
+            </div>
+            <div class="form-group m-2">
+                <label for="">Password</label>
+                <input formControlName="password" type="password" name="" id="password" class="form-control">
+                @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+
+                    @if(loginForm.get('password')?.['errors']?.['required']) {
+                        <div class="alert alert-warning">
+                            This field is required
+                        </div>
+                    }
+                }
+            </div>
+            <div class="d-grid my-2">
+                <button class="btn btn-primary">Login</button>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'todos', component: TodoComponent },
     { path: 'github', component: UsersComponent },
     { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+    { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
     { path: '**', component: PageNotFoundComponent },
 
 ];
