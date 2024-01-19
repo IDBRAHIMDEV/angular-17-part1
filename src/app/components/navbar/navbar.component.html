@@ -38,8 +38,14 @@
             </ul>
 
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a routerLink="/auth/signup" class="nav-link">Register</a></li>
-                <li class="nav-item"><a routerLink="/auth/signin" class="nav-link">Login</a></li>
+                @if(!authUser) {
+
+                    <li class="nav-item"><a routerLink="/auth/signup" class="nav-link">Register</a></li>
+                    <li class="nav-item"><a routerLink="/auth/signin" class="nav-link">Login</a></li>
+                }@else{
+                    <li class="nav-item"><button class="nav-link">{{ authUser.firstName }} {{ authUser.lastName }}</button> </li>
+                    <li class="nav-item"><button (click)="logout()" class="nav-link">Logout</button></li>
+                }
             </ul>
            
         </div>
