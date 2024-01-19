@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { TableCoursesComponent } from '../../components/table-courses/table-courses.component';
 import { ListCoursesComponent } from '../../components/list-courses/list-courses.component';
 import { Course } from '../../models/course';
@@ -19,7 +19,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
       this.loadCourses()
   }
-
+  text = signal('')
   courseService = inject(CourseService)
 
   courseForm: Course = {

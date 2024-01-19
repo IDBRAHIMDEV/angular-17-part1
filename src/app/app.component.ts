@@ -6,11 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { TodoComponent } from './pages/todo/todo.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { UsersComponent } from './pages/users/users.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HomeComponent, FormsModule, TodoComponent, CoursesComponent, UsersComponent],
+  imports: [CommonModule, RouterOutlet, HomeComponent, FormsModule, TodoComponent, CoursesComponent, UsersComponent, NavbarComponent],
   templateUrl: './app.component.html', 
   styleUrl: './app.component.css'
 })
